@@ -3,37 +3,48 @@ package test;
 public class Song {
 	
 	private String name;
-	private String genre;
+	private Genre genre;
 	private String artist;
+	private double length;
 	
-	public Song(String name, String genre, String artist) {
+	//constructor
+	public Song(String name, Genre genre, String artist, double length) {
 		this.name = name;
 		this.genre = genre;
 		this.artist = artist;
+		this.length = length;
 	}
 	
-	public String ToString() {
-		return "Song: [name: " + this.name + ", artist: " + this.artist + ", genre: " + this.genre + "]";
+	//Returns song info as string
+	public String toString() {
+		return "Song: [name: " + this.name + ", artist: " + this.artist + ", length: " + this.length + ", genre: " + this.genre + "]";
 	}
 	
-	String GetName() {
+	//getters & setters
+	String getName() {
 		return this.name;
 	}
-	void SetName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 	
-	String GetGenre() {
+	Genre getGenre() {
 		return this.genre;
 	}
-	void SetGenre(String genre) {
+	void setGenre(Genre genre) {
 		this.genre = genre;
 	}
 	
-	String GetArtist() {
+	String getArtist() {
 		return this.name;
 	}
-	void SetArtist(String artist) {
+	void setArtist(String artist) {
 		this.artist = artist;
+	}
+	double getLength() {
+		return this.length;
+	}
+	void setLength(double length) {
+		this.length = length;
 	}
 }
