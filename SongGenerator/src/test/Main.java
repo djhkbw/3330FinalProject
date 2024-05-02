@@ -27,13 +27,17 @@ public class Main {
 		playlist1.addSong(song1);
 		playlist1.addSong(song2);
 		System.out.println(playlist1.toString());
+		
+		 //get total runtime of playlist
+		System.out.println("Total runtime of playlist: " + playlist1.getTotalRuntime());
+		
 		//remove song from playlist
-		// playlist1.removeSong(song1);
-		// System.out.println(playlist1.toString());
-		// //search for song in playlist
-		// System.out.println("Enter the song name to search: ");
-		// String searchSong = sc.nextLine();
-		// playlist1.searchSong(searchSong);
+		playlist1.removeSong(song1);
+		System.out.println(playlist1.toString());
+		//search for song in playlist
+		System.out.println("Enter the song name to search: ");
+		String searchSong = sc.nextLine();
+		playlist1.searchSong(searchSong);
 		
 		
 
