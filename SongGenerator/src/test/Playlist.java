@@ -14,13 +14,6 @@ public class Playlist {
 		}
 	}
 	
-	//Prints out a list of the songs in the play list
-	public void printSongs() {
-		for(Song song : songList) {
-			System.out.println(song.toString());
-		}
-	}
-	
 	//adds a song to the play list
 	public void addSong(Song s) {
 		boolean duplicate = false;
