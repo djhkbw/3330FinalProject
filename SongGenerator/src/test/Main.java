@@ -11,12 +11,36 @@ public class Main {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
+		if (songName.isEmpty()) {
+			System.out.println("Please enter a song name: ");
+			songName = sc.nextLine();
+		}
 		System.out.println("Enter the genre: ");
 		String genre = sc.nextLine();
+		if (genre.isEmpty()) {
+			System.out.println("Please enter a genre: ");
+			genre = sc.nextLine();
+		}
 		System.out.println("Enter the artist: ");
 		String artist = sc.nextLine();
+		if (artist.isEmpty()) {
+			System.out.println("Please enter an artist: ");
+			artist = sc.nextLine();
+		}
 		System.out.println("Enter the duration: ");
 		double duration = sc.nextDouble();
+		if (duration == 0) {
+			System.out.println("Please enter a duration: ");
+			duration = sc.nextDouble();
+		}
+		System.out.println("Enter the song name to search: ");
+		String searchSong = sc.nextLine();
+		if (searchSong.isEmpty()) {
+			System.out.println("Please enter a song name to search: ");
+			searchSong = sc.nextLine();
+		}
+	
+		sc.close();
 	
 
 		//save input to song object
@@ -35,9 +59,11 @@ public class Main {
 		playlist1.removeSong(song1);
 		System.out.println(playlist1.toString());
 		//search for song in playlist
-		System.out.println("Enter the song name to search: ");
-		String searchSong = sc.nextLine();
+		
 		playlist1.searchSong(searchSong);
+
+		System.out.println("searched song: " + searchSong);
+		
 		
 		
 
@@ -67,7 +93,7 @@ public class Main {
 		// else {
 		// 	System.out.println("Login failed");
 		// }
-		sc.close();
+		
 
 
 

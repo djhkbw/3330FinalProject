@@ -35,7 +35,7 @@ public class login {
        
 	}
 	public boolean checkLogin(String username2, String password2) {
-		// TODO Auto-generated method stub
+		
         if(this.username.equals(username2) && this.password.equals(password2)) {
             return true;
         }
