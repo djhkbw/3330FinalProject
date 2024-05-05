@@ -47,8 +47,17 @@ public class Playlist {
 		return total;
 	}
 	
+	//Prints whole play list
+	public void printPlaylist() {
+		System.out.println("\n");
+		for(Song song : songList) {
+			System.out.println(song.toString());
+		}
+		System.out.println("\n");
+	}
+	
 	//Helper function
-	boolean isDuplicate(Song s) {
+	private boolean isDuplicate(Song s) {
 		boolean duplicate = false;
 		for(Song song : songList) {
 			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
