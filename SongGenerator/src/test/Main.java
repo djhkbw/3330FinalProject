@@ -5,7 +5,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Playlist playlist = new Playlist();
-		Scanner sc=new Scanner(System.in);
 		while(true) {
 			//Explain program to user
 			int usrInput = 0;
@@ -13,19 +12,19 @@ public class Main {
 					+ "(1): Add a song to the playlist\n"
 					+ "(2): Search current playlist for songs\n"
 					+ "(3): Get the total runtime of the playlist\n"
-					+ "(4): Remove a song from the playlist\n"
+					+ "(4): Remove a song from the playlist"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(8): Get all songs of a certain artist\n"
 					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Clear playlist\n"
-					+ "(11): Quit");
+					+ "(10): Clear playlist");
 			
 			//get user input
 			while(true) {
 				try {
+					Scanner sc=new Scanner(System.in);
 					usrInput = sc.nextInt();
-					while(usrInput < 1 || usrInput > 11) {
+					while(usrInput < 1 || usrInput > 10) {
 						System.out.println("Please enter bewteen 1 and 10:");
 						usrInput = sc.nextInt();
 					}
@@ -34,35 +33,33 @@ public class Main {
 				catch(Exception e){
 					System.out.println("Please enter bewteen 1 and 10:");
 				}
-				
 			}
-			
 			
 			if(usrInput == 1) {
-				addNewSongToPlaylist(playlist, sc);
+				addNewSongToPlaylist(playlist);
 			}
 			if(usrInput == 2) {
-				searchAsong(playlist);
+				searchSong(playlist);
+				
+				
 			}
 			if(usrInput == 3) {
-				float runTime = playlist.getTotalRuntime();
-				System.out.println("The total runtime of this playlist is" + runTime + "minutes.");
+				
 			}
 			if(usrInput == 4) {
-				removeSongFromPlaylist(playlist);
+				removeSong(playlist);
 			}
 			if(usrInput == 5) {
 				playlist.printPlaylist();
 			}
 			if(usrInput == 6) {
-				Genre genre = getUserGenre(sc);
-				playlist.printByGenre(genre);
+				
 			}
 			if(usrInput == 7) {
 				
 			}
 			if(usrInput == 8) {
-				getSongByArtist(playlist);
+				getSongsByArtist(playlist);
 			}
 			if(usrInput == 9) {
 				getSongsBelowLength(playlist);
@@ -70,11 +67,7 @@ public class Main {
 			if(usrInput == 10) {
 				
 			}
-			if(usrInput == 11) {
-				System.out.println("Goodbye!");
-				sc.close();
-				break;
-			}
+			
 		}
 	
 
@@ -141,31 +134,65 @@ public class Main {
 
 	}
 	
-	private static void getSongsBelowLength(Playlist playlist) {
-		
-		throw new UnsupportedOperationException("Unimplemented method 'getSongsBelowLength'");
+	private static void getSongsBelowLength(Playlist p) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the length: ");
+		float length;
+		while(true) {
+			try {
+				length = sc.nextFloat();
+				while (length == 0) {
+					System.out.println("Enter the length:");
+					length = sc.nextFloat();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter the length:");
+				sc.next();
+			}
+		}
+		p.getSongsBelowLength(length); // Get all songs below a certain length
+		sc.close();
 	}
 
-	private static void getSongByArtist(Playlist playlist) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getSongByArtist'");
+	private static void getSongsByArtist(Playlist p) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the artist: ");
+		String artist = sc.nextLine();
+		if (artist.isEmpty()) {
+			System.out.println("Please enter an artist: ");
+			artist = sc.nextLine();
+		}
+		p.getSongsByArtist(artist);
+		sc.close();
 	}
 
-	private static void removeSongFromPlaylist(Playlist playlist) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'removeSongFromPlaylist'");
+	private static void removeSong(Playlist p) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the song name: ");
+		String songName = sc.nextLine();
+		if (songName.isEmpty()) {
+			System.out.println("Please enter a song name: ");
+			songName = sc.nextLine();
+		}
+		p.removeSong(songName); // Remove the song with the given name from the playlist
+		sc.close();
 	}
 
-	private static void searchAsong(Playlist playlist) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'searchAsong'");
+	private static void searchSong(Playlist p) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the song name: ");
+		String songName = sc.nextLine();
+		if (songName.isEmpty()) {
+			System.out.println("Please enter a song name: ");
+			songName = sc.nextLine();
+		}
+		p.searchSong(songName); // Search for the song with the given name in the playlist
+		sc.close();
 	}
 
 	public static void addNewSongToPlaylist(Playlist p) {
 		Scanner sc=new Scanner(System.in);
-	}
-	public static void addNewSongToPlaylist(Playlist p, Scanner sc) {
-		//Scanner sc=new Scanner(System.in);
 		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
@@ -173,6 +200,8 @@ public class Main {
 			System.out.println("Please enter a song name: ");
 			songName = sc.nextLine();
 		}
+
+	
 		//read in genre
 		System.out.println("Enter a number for the genre \n(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country): ");
 		int genreInput;
@@ -236,52 +265,11 @@ public class Main {
 			}
 		}
 	
-		//sc.close();
+		sc.close();
 		
 		Song s = new Song(songName, genre, artist, duration);
 		p.addSong(s);
 	}
 	
-	public static Genre getUserGenre(Scanner sc) {
-		int usrInput = 0;
-		Genre genre = null;
-		System.out.println("Enter the genre you would like to search the playlist for\n"
-				+ "(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country):");
-		while(true) {
-			try {
-				usrInput = sc.nextInt();
-				while (usrInput < 1 || usrInput > 7) {
-					System.out.println("Enter a listed number for the genre:");	
-					usrInput = sc.nextInt();
-				}
-				break;
-			}catch(Exception e){
-				System.out.println("Enter a listed number for the genre:");
-				sc.next();
-			}
-		}
-		if(usrInput == 1) {
-			genre = Genre.ROCK;
-		}
-		if(usrInput == 2) {
-			genre = Genre.POP;
-		}
-		if(usrInput == 3) {
-			genre = Genre.GRUNGE;
-		}
-		if(usrInput == 4) {
-			genre = Genre.CLASSICAL;
-		}
-		if(usrInput == 5) {
-			genre = Genre.ELECTRO;
-		}
-		if(usrInput == 6) {
-			genre = Genre.JAZZ;
-		}
-		if(usrInput == 7) {
-			genre = Genre.COUNTRY;
-		}
-		return genre;
-	}
 
 }

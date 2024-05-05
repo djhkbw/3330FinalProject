@@ -89,10 +89,11 @@ public class Playlist {
 		return duplicate;
 	}
 
-public void removeSong(Song songToRemove) {
-	for (Song song : songList) {
-		if (song.getName().equals(songToRemove.getName()) && song.getArtist().equals(songToRemove.getArtist())) {
-			songList.remove(song);
+public void removeSong(String songName) {
+	for (int i = 0; i < songList.size(); i++) {
+		Song song = songList.get(i);
+		if (song.getName().equals(songName)) {
+			songList.remove(i);
 			break; // Exit the loop after removing the song
 		}
 	}
