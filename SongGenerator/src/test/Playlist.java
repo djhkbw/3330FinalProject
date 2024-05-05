@@ -21,6 +21,7 @@ public class Playlist {
 			songList.add(s);
 		}
 	}
+	
 	//removes a song from the play list
 	public void removeSong(Song s) {
 		for(Song song : songList) {
@@ -29,6 +30,7 @@ public class Playlist {
 			}
 		}
 	}
+	
 	//searches for a song in the play list
 	public void searchSong(String name) {
 		for(Song song : songList) {
@@ -49,11 +51,23 @@ public class Playlist {
 	
 	//Prints whole play list
 	public void printPlaylist() {
-		//System.out.println("\n");
 		for(Song song : songList) {
 			System.out.println(song.toString());
 		}
-		//System.out.println("\n");
+	}
+	
+	//Prints only songs of a certain genre;
+	public void printByGenre(Genre genre) {
+		int count = 0;
+		for(Song song : songList) {
+			if(song.getGenre() == genre) {
+				System.out.println(song.toString());
+				count++;
+			}
+		}
+		if(count == 0) {
+			System.out.println("There are no songs of that genre in the playlist yet.");
+		}
 	}
 	
 	//Helper function

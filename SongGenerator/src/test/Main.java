@@ -13,7 +13,7 @@ public class Main {
 					+ "(1): Add a song to the playlist\n"
 					+ "(2): Search current playlist for songs\n"
 					+ "(3): Get the total runtime of the playlist\n"
-					+ "(4): Remove a song from the playlist"
+					+ "(4): Remove a song from the playlist\n"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(8): Get all songs of a certain artist\n"
@@ -52,7 +52,8 @@ public class Main {
 				playlist.printPlaylist();
 			}
 			if(usrInput == 6) {
-				
+				Genre genre = getUserGenre(sc);
+				playlist.printByGenre(genre);
 			}
 			if(usrInput == 7) {
 				
@@ -215,5 +216,46 @@ public class Main {
 		p.addSong(s);
 	}
 	
+	public static Genre getUserGenre(Scanner sc) {
+		int usrInput = 0;
+		Genre genre = null;
+		System.out.println("Enter the genre you would like to search the playlist for\n"
+				+ "(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country):");
+		while(true) {
+			try {
+				usrInput = sc.nextInt();
+				while (usrInput < 1 || usrInput > 7) {
+					System.out.println("Enter a listed number for the genre:");	
+					usrInput = sc.nextInt();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter a listed number for the genre:");
+				sc.next();
+			}
+		}
+		if(usrInput == 1) {
+			genre = Genre.ROCK;
+		}
+		if(usrInput == 2) {
+			genre = Genre.POP;
+		}
+		if(usrInput == 3) {
+			genre = Genre.GRUNGE;
+		}
+		if(usrInput == 4) {
+			genre = Genre.CLASSICAL;
+		}
+		if(usrInput == 5) {
+			genre = Genre.ELECTRO;
+		}
+		if(usrInput == 6) {
+			genre = Genre.JAZZ;
+		}
+		if(usrInput == 7) {
+			genre = Genre.COUNTRY;
+		}
+		return genre;
+	}
 
 }
