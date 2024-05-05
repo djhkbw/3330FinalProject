@@ -16,17 +16,12 @@ public class Playlist {
 	
 	//adds a song to the play list
 	public void addSong(Song s) {
-		boolean duplicate = false;
-		for(Song song : songList) {
-			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
-				duplicate = true;
-			}
-		}
+		boolean duplicate = this.isDuplicate(s);
 		if(!duplicate) {
 			songList.add(s);
 		}
 	}
-	//romoves a song from the play list
+	//removes a song from the play list
 	public void removeSong(Song s) {
 		for(Song song : songList) {
 			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
@@ -50,5 +45,16 @@ public class Playlist {
 			total += song.getLength();
 		}
 		return total;
+	}
+	
+	//Helper function
+	boolean isDuplicate(Song s) {
+		boolean duplicate = false;
+		for(Song song : songList) {
+			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
+				duplicate = true;
+			}
+		}
+		return duplicate;
 	}
 }
