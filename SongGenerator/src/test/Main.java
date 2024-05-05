@@ -154,6 +154,85 @@ public class Main {
 	
 
 	}
-
+	
+	public void addNewSongToPlaylist(Playlist p) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the song name: ");
+		String songName = sc.nextLine();
+		if (songName.isEmpty()) {
+			System.out.println("Please enter a song name: ");
+			songName = sc.nextLine();
+		}
+		System.out.println("Enter a number for the genre \n(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country): ");
+		int genreInput;
+		Genre genre = null;
+		while(true) {
+			try {
+				genreInput = sc.nextInt();
+				while (genreInput < 1 || genreInput > 7) {
+					System.out.println("Enter a listed number for the genre:");	
+					genreInput = sc.nextInt();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter a listed number for the genre:");
+				sc.next();
+			}
+		}
+		if(genreInput == 1) {
+			genre = Genre.ROCK;
+		}
+		if(genreInput == 2) {
+			genre = Genre.POP;
+		}
+		if(genreInput == 3) {
+			genre = Genre.GRUNGE;
+		}
+		if(genreInput == 4) {
+			genre = Genre.CLASSICAL;
+		}
+		if(genreInput == 5) {
+			genre = Genre.ELECTRO;
+		}
+		if(genreInput == 6) {
+			genre = Genre.JAZZ;
+		}
+		if(genreInput == 7) {
+			genre = Genre.COUNTRY;
+		}
+		System.out.println("Enter the artist: ");
+		String artist = sc.nextLine();
+		if (artist.isEmpty()) {
+			System.out.println("Please enter an artist: ");
+			artist = sc.nextLine();
+		}
+		System.out.println("Enter the duration: ");
+		double duration;
+		while(true) {
+			try {
+				duration = sc.nextDouble();
+				while (duration == 0) {
+					System.out.println("Enter the duration (example: 2.36):");
+					duration = sc.nextDouble();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter the duration (example: 2.36):");
+				sc.next();
+			}
+		}
+		System.out.println("Enter the song name to search: ");
+		String searchSong = sc.nextLine();
+		if (searchSong.isEmpty()) {
+			System.out.println("Please enter a song name to search: ");
+			searchSong = sc.nextLine();
+		}
+	
+		sc.close();
+		
+		Song s = new Song(songName, genre, artist, duration);
+		p.addSong(s);
+	}
+	
 
 }
