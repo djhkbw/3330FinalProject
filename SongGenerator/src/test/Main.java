@@ -39,10 +39,10 @@ public class Main {
 			}
 			
 			if(usrInput == 1) {
-				addNewSongToPlaylist(playlist);
+				addNewSongToPlaylist(playlist, sc);
 			}
 			if(usrInput == 2) {
-				searchSong(playlist);
+				searchSong(playlist, sc);
 				
 				
 			}
@@ -51,7 +51,7 @@ public class Main {
 				System.out.println("The total runtime of this playlist is " + runTime + " minutes.");
 			}
 			if(usrInput == 4) {
-				removeSong(playlist);
+				removeSong(playlist, sc);
 			}
 			if(usrInput == 5) {
 				playlist.printPlaylist();
@@ -62,7 +62,7 @@ public class Main {
 				playlist.printByGenre(genre);
 			}
 			if(usrInput == 7) {
-				getSongsByArtist(playlist);
+				getSongsByArtist(playlist, sc);
 			}
 			if (usrInput == 8) {
 				getSongsBelowLength(playlist);
@@ -175,8 +175,7 @@ public class Main {
 		sc.close();
 	}
 
-	private static void getSongsByArtist(Playlist p) {
-		Scanner sc=new Scanner(System.in);
+	private static void getSongsByArtist(Playlist p, Scanner sc) {
 		System.out.println("Enter the artist: ");
 		String artist = sc.nextLine();
 		if (artist.isEmpty()) {
@@ -184,11 +183,9 @@ public class Main {
 			artist = sc.nextLine();
 		}
 		p.getSongsByArtist(artist);
-		sc.close();
 	}
 
-	private static void removeSong(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void removeSong(Playlist p, Scanner sc) {
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
 		if (songName.isEmpty()) {
@@ -196,11 +193,9 @@ public class Main {
 			songName = sc.nextLine();
 		}
 		p.removeSong(songName); // Remove the song with the given name from the playlist
-		sc.close();
 	}
 
-	private static void searchSong(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void searchSong(Playlist p, Scanner sc) {
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
 		if (songName.isEmpty()) {
@@ -208,11 +203,9 @@ public class Main {
 			songName = sc.nextLine();
 		}
 		p.searchSong(songName); // Search for the song with the given name in the playlist
-		sc.close();
 	}
 
-	public static void addNewSongToPlaylist(Playlist p) {
-		Scanner sc=new Scanner(System.in);
+	public static void addNewSongToPlaylist(Playlist p, Scanner sc) {
 		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
@@ -285,8 +278,6 @@ public class Main {
 			}
 		}
 	
-		sc.close();
-		
 		Song s = new Song(songName, genre, artist, duration);
 		p.addSong(s);
 	}
