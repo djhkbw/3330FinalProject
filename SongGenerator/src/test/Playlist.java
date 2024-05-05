@@ -110,5 +110,10 @@ public void removeSong(String songName) {
 			break; // Exit the loop after removing the song
 		}
 	}
+	
+}
+public void clearPlaylist() {
+	songList.clear();
 }
 }
+

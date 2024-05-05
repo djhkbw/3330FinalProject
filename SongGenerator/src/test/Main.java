@@ -66,15 +66,18 @@ public class Main {
 			if(usrInput == 9) {
 				getSongsBelowLength(playlist);
 			}
-			if(usrInput == 10) {
+			Scanner sc = new Scanner(System.in); // Declare the Scanner object outside of the try block
+			if (usrInput == 9) {
+				getSongsBelowLength(playlist);
+			}
+			if (usrInput == 10) {
 				double length = getUserLength(sc);
 				playlist.getSongsAboveLength(length);
 			}
-			
-			if(usrInput == 11) {
-				
+			if (usrInput == 11) {
+				clearAllSongs(playlist);
 			}
-			if(usrInput == 12) {
+			if (usrInput == 12) {
 				System.out.println("Goodbye!");
 				sc.close();
 				break;
@@ -145,6 +148,12 @@ public class Main {
 
 	}
 	
+	private static void clearAllSongs(Playlist playlist) {
+		playlist.clearPlaylist();
+		System.out.println("Playlist cleared");
+	}
+
+
 	private static void getSongsBelowLength(Playlist p) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the length: ");
