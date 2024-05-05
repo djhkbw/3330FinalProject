@@ -155,8 +155,7 @@ public class Main {
 	}
 
 
-	private static void getSongsBelowLength(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void getSongsBelowLength(Playlist p, Scanner sc) {
 		System.out.println("Enter the length: ");
 		float length;
 		while(true) {
@@ -173,7 +172,6 @@ public class Main {
 			}
 		}
 		p.getSongsBelowLength(length); // Get all songs below a certain length
-		sc.close();
 	}
 
 	private static void getSongsByArtist(Playlist p, Scanner sc) {
