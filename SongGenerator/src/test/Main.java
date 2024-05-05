@@ -23,21 +23,21 @@ public class Main {
 					+ "(12): Quit");
 			
 			//get user input
-			while(true) {
+			Scanner sc = new Scanner(System.in);
+			while (true) {
 				try {
-					Scanner sc=new Scanner(System.in);
-					usrInput = sc.nextInt();
-					while(usrInput < 1 || usrInput > 12) {
-						System.out.println("Please enter bewteen 1 and 12:");
+					int usrinput = sc.nextInt();
+					while (usrInput < 1 || usrInput > 12) {
+						System.out.println("Please enter between 1 and 12:");
 						usrInput = sc.nextInt();
 					}
 					break;
-				}
-				catch(Exception e){
-					System.out.println("Please enter bewteen 1 and 12:");
+				} catch (Exception e) {
+					System.out.println("Please enter between 1 and 12:");
 					sc.next();
 				}
 			}
+
 			
 			if(usrInput == 1) {
 				addNewSongToPlaylist(playlist);
@@ -67,7 +67,7 @@ public class Main {
 			if(usrInput == 7) {
 				getSongsBelowLength(playlist);
 			}
-			Scanner sc = new Scanner(System.in); // Declare the Scanner object outside of the try block
+
 			if (usrInput == 8) {
 				getSongsBelowLength(playlist);
 			}
