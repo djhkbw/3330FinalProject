@@ -15,12 +15,48 @@ public class Main {
 			System.out.println("Please enter a song name: ");
 			songName = sc.nextLine();
 		}
-		System.out.println("Enter the genre: ");
-		String genre = sc.nextLine();
-		if (genre.isEmpty()) {
-			System.out.println("Please enter a genre: ");
-			genre = sc.nextLine();
+		System.out.println("Enter a number for the genre \n(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country): ");
+		int genreInput;
+		Genre genre = null;
+		while(true) {
+			try {
+				genreInput = sc.nextInt();
+				if (genreInput < 1 || genreInput > 7) {
+					throw new Exception();
+				}else {
+					break;
+				}
+			}catch(Exception e){
+				System.out.println("Enter a number for the genre:");
+				sc.next();
+			}
 		}
+		if(genreInput == 1) {
+			genre = Genre.ROCK;
+		}
+		if(genreInput == 2) {
+			genre = Genre.POP;
+		}
+		if(genreInput == 3) {
+			genre = Genre.GRUNGE;
+		}
+		if(genreInput == 4) {
+			genre = Genre.CLASSICAL;
+		}
+		if(genreInput == 5) {
+			genre = Genre.ELECTRO;
+		}
+		if(genreInput == 6) {
+			genre = Genre.JAZZ;
+		}
+		if(genreInput == 7) {
+			genre = Genre.COUNTRY;
+		}
+//		String genre = sc.nextLine();
+//		if (genre.isEmpty()) {
+//			System.out.println("Please enter a genre: ");
+//			genre = sc.nextLine();
+//		}
 		System.out.println("Enter the artist: ");
 		String artist = sc.nextLine();
 		if (artist.isEmpty()) {
@@ -57,7 +93,7 @@ public class Main {
 	
 
 		//save input to song object
-		Song song2 = new Song(songName, Genre.valueOf(genre), artist, duration);
+		Song song2 = new Song(songName, genre, artist, duration);
 		System.out.println(song2.toString());
 		//add song to playlist
 		Playlist playlist1 = new Playlist();
