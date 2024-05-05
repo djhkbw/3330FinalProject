@@ -5,6 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Playlist playlist = new Playlist();
+		Scanner sc=new Scanner(System.in);
 		while(true) {
 			//Explain program to user
 			int usrInput = 0;
@@ -17,14 +18,14 @@ public class Main {
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(8): Get all songs of a certain artist\n"
 					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Clear playlist");
+					+ "(10): Clear playlist\n"
+					+ "(11): Quit");
 			
 			//get user input
 			while(true) {
 				try {
-					Scanner sc=new Scanner(System.in);
 					usrInput = sc.nextInt();
-					while(usrInput < 1 || usrInput > 10) {
+					while(usrInput < 1 || usrInput > 11) {
 						System.out.println("Please enter bewteen 1 and 10:");
 						usrInput = sc.nextInt();
 					}
@@ -36,7 +37,7 @@ public class Main {
 			}
 			
 			if(usrInput == 1) {
-				addNewSongToPlaylist(playlist);
+				addNewSongToPlaylist(playlist, sc);
 			}
 			if(usrInput == 2) {
 				
@@ -64,6 +65,11 @@ public class Main {
 			}
 			if(usrInput == 10) {
 				
+			}
+			if(usrInput == 11) {
+				System.out.println("Goodbye!");
+				sc.close();
+				break;
 			}
 		}
 	
@@ -131,8 +137,8 @@ public class Main {
 
 	}
 	
-	public static void addNewSongToPlaylist(Playlist p) {
-		Scanner sc=new Scanner(System.in);
+	public static void addNewSongToPlaylist(Playlist p, Scanner sc) {
+		//Scanner sc=new Scanner(System.in);
 		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
@@ -203,7 +209,7 @@ public class Main {
 			}
 		}
 	
-		sc.close();
+		//sc.close();
 		
 		Song s = new Song(songName, genre, artist, duration);
 		p.addSong(s);

@@ -49,11 +49,11 @@ public class Playlist {
 	
 	//Prints whole play list
 	public void printPlaylist() {
-		System.out.println("\n");
+		//System.out.println("\n");
 		for(Song song : songList) {
 			System.out.println(song.toString());
 		}
-		System.out.println("\n");
+		//System.out.println("\n");
 	}
 	
 	//Helper function
