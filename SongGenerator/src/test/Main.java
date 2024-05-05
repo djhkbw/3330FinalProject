@@ -28,7 +28,19 @@ public class Main {
 			artist = sc.nextLine();
 		}
 		System.out.println("Enter the duration: ");
-		double duration = sc.nextDouble();
+		double duration;
+		while(true) {
+			try {
+				duration = sc.nextDouble();
+				if (duration == 0) {
+					System.out.println("Please enter a duration: ");
+					throw new Exception();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter the duration (example: 2.36):");
+			}
+		}
 		if (duration == 0) {
 			System.out.println("Please enter a duration: ");
 			duration = sc.nextDouble();
