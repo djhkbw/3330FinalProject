@@ -43,7 +43,8 @@ public class Main {
 				
 			}
 			if(usrInput == 3) {
-				
+				float runTime = playlist.getTotalRuntime();
+				System.out.println("The total runtime of this playlist is" + runTime + "minutes.");
 			}
 			if(usrInput == 4) {
 				
