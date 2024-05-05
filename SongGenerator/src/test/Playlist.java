@@ -1,6 +1,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Playlist {
 	
@@ -109,5 +110,11 @@ public class Playlist {
 				break; // Exit the loop after removing the song
 			}
 		}
+	}
+	
+	//Shuffles the order of the songs in the playlist
+	public void shufflePlaylist() {
+		Collections.shuffle(songList);
+		this.printPlaylist();
 	}
 }

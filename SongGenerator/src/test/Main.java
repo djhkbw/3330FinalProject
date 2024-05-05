@@ -20,20 +20,21 @@ public class Main {
 					+ "(9): Get all songs below a certain length\n"
 					+ "(10): Get all songs above a certian length\n"
 					+ "(11): Clear playlist\n"
+					+ "(12): Shuffle the playlist order\n"
 					+ "(12): Quit");
 			
 			//get user input
 			while(true) {
 				try {
 					usrInput = sc.nextInt();
-					while(usrInput < 1 || usrInput > 11) {
-						System.out.println("Please enter bewteen 1 and 10:");
+					while(usrInput < 1 || usrInput > 12) {
+						System.out.println("Please enter bewteen 1 and 12:");
 						usrInput = sc.nextInt();
 					}
 					break;
 				}
 				catch(Exception e){
-					System.out.println("Please enter bewteen 1 and 10:");
+					System.out.println("Please enter bewteen 1 and 12:");
 				}
 				
 			}
@@ -47,7 +48,7 @@ public class Main {
 			}
 			if(usrInput == 3) {
 				float runTime = playlist.getTotalRuntime();
-				System.out.println("The total runtime of this playlist is" + runTime + "minutes.");
+				System.out.println("The total runtime of this playlist is " + runTime + " minutes.");
 			}
 			if(usrInput == 4) {
 				removeSongFromPlaylist(playlist);
@@ -76,6 +77,9 @@ public class Main {
 				
 			}
 			if(usrInput == 12) {
+				playlist.shufflePlaylist();
+			}
+			if(usrInput == 13) {
 				System.out.println("Goodbye!");
 				sc.close();
 				break;
