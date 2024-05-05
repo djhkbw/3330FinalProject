@@ -13,7 +13,7 @@ public class Main {
 					+ "(1): Add a song to the playlist\n"
 					+ "(2): Search current playlist for songs\n"
 					+ "(3): Get the total runtime of the playlist\n"
-					+ "(4): Remove a song from the playlist"
+					+ "(4): Remove a song from the playlist\n"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(7): Get all songs of a certain artist\n"
@@ -35,6 +35,7 @@ public class Main {
 				}
 				catch(Exception e){
 					System.out.println("Please enter bewteen 1 and 12:");
+					sc.next();
 				}
 			}
 			
