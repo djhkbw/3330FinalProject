@@ -103,24 +103,24 @@ public class Playlist {
 		return duplicate;
 	}
 
-public void removeSong(String songName) {
-	for (int i = 0; i < songList.size(); i++) {
-		Song song = songList.get(i);
-		if (song.getName().equals(songName)) {
-			songList.remove(i);
-			break; // Exit the loop after removing the song
+	public void removeSong(String songName) {
+		for (int i = 0; i < songList.size(); i++) {
+			Song song = songList.get(i);
+			if (song.getName().equals(songName)) {
+				songList.remove(i);
+				break; // Exit the loop after removing the song
+			}
 		}
 	}
-}
-
-// Shuffles the order of the songs in the playlist
-public void shufflePlaylist() {
-	Collections.shuffle(songList);
-	this.printPlaylist();
-}
-
-public void clearPlaylist() {
-	songList.clear();
-}
+	
+	// Shuffles the order of the songs in the playlist
+	public void shufflePlaylist() {
+		Collections.shuffle(songList);
+		this.printPlaylist();
+	}
+	
+	public void clearPlaylist() {
+		songList.clear();
+	}
 }
 

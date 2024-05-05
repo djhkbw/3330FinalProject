@@ -5,6 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Playlist playlist = new Playlist();
+		Scanner sc = new Scanner(System.in); // Declare the Scanner object outside of the try block
 		while(true) {
 			//Explain program to user
 			int usrInput = 0;
@@ -15,17 +16,16 @@ public class Main {
 					+ "(4): Remove a song from the playlist"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
-					+ "(8): Get all songs of a certain artist\n"
-					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Get all songs above a certian length\n"
-					+ "(11): Clear playlist\n"
-					+ "(12): Shuffle the playlist order\n"
+					+ "(7): Get all songs of a certain artist\n"
+					+ "(8): Get all songs below a certain length\n"
+					+ "(9): Get all songs above a certian length\n"
+					+ "(10): Clear playlist\n"
+					+ "(11): Shuffle the playlist order\n"
 					+ "(12): Quit");
 			
 			//get user input
 			while(true) {
 				try {
-					Scanner sc=new Scanner(System.in);
 					usrInput = sc.nextInt();
 					while(usrInput < 1 || usrInput > 12) {
 						System.out.println("Please enter bewteen 1 and 12:");
@@ -58,12 +58,12 @@ public class Main {
 			}
 			
 			if(usrInput == 6) {
-				getSongsByArtist(playlist);
+				Genre genre = getUserGenre(sc);
+				playlist.printByGenre(genre);
 			}
 			if(usrInput == 7) {
-				getSongsBelowLength(playlist);
+				getSongsByArtist(playlist);
 			}
-			Scanner sc = new Scanner(System.in); // Declare the Scanner object outside of the try block
 			if (usrInput == 8) {
 				getSongsBelowLength(playlist);
 			}
