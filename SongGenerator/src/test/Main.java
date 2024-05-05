@@ -56,33 +56,28 @@ public class Main {
 			if(usrInput == 5) {
 				playlist.printPlaylist();
 			}
+			
 			if(usrInput == 6) {
-				
-			}
-			if(usrInput == 7) {
-				
-			}
-			if(usrInput == 8) {
 				getSongsByArtist(playlist);
 			}
-			if(usrInput == 9) {
+			if(usrInput == 7) {
 				getSongsBelowLength(playlist);
 			}
 			Scanner sc = new Scanner(System.in); // Declare the Scanner object outside of the try block
-			if (usrInput == 9) {
+			if (usrInput == 8) {
 				getSongsBelowLength(playlist);
 			}
-			if (usrInput == 10) {
+			if (usrInput == 9) {
 				double length = getUserLength(sc);
 				playlist.getSongsAboveLength(length);
 			}
-			if (usrInput == 11) {
+			if (usrInput == 10) {
 				clearAllSongs(playlist);
 			}
-			if(usrInput == 12) {
+			if(usrInput == 11) {
 				playlist.shufflePlaylist();
 			}
-			if(usrInput == 13) {
+			if(usrInput == 12) {
 				System.out.println("Goodbye!");
 				sc.close();
 				break;
