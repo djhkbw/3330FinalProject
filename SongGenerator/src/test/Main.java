@@ -21,13 +21,13 @@ public class Main {
 		while(true) {
 			try {
 				genreInput = sc.nextInt();
-				if (genreInput < 1 || genreInput > 7) {
-					throw new Exception();
-				}else {
-					break;
+				while (genreInput < 1 || genreInput > 7) {
+					System.out.println("Enter a listed number for the genre:");	
+					genreInput = sc.nextInt();
 				}
+				break;
 			}catch(Exception e){
-				System.out.println("Enter a number for the genre:");
+				System.out.println("Enter a listed number for the genre:");
 				sc.next();
 			}
 		}
@@ -68,11 +68,11 @@ public class Main {
 		while(true) {
 			try {
 				duration = sc.nextDouble();
-				if (duration == 0) {
-					throw new Exception();
-				}else {
-					break;
+				while (duration == 0) {
+					System.out.println("Enter the duration (example: 2.36):");
+					duration = sc.nextDouble();
 				}
+				break;
 			}catch(Exception e){
 				System.out.println("Enter the duration (example: 2.36):");
 				sc.next();
