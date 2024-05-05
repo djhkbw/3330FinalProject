@@ -4,29 +4,68 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Playlist playlist1 = new Playlist();
+		Playlist playlist = new Playlist();
 		while(true) {
+			//Explain program to user
 			int usrInput = 0;
 			System.out.println("Welcome to Song Generator!\n"
 					+ "(1): Add a song to the playlist\n"
 					+ "(2): Search current playlist for songs\n"
-					+ "(3): Get the total runtime of the playlis\n"
+					+ "(3): Get the total runtime of the playlist\n"
 					+ "(4): Remove a song from the playlist"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(8): Get all songs of a certain artist\n"
 					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Get all songs above a certain length");
-			try {
-				Scanner sc=new Scanner(System.in);
-				usrInput = sc.nextInt();
-				while(usrInput < 1 || usrInput > 10) {
-					System.out.println("Please enter bewteen 1 and 10:");
+					+ "(10): Clear playlist");
+			
+			//get user input
+			while(true) {
+				try {
+					Scanner sc=new Scanner(System.in);
 					usrInput = sc.nextInt();
+					while(usrInput < 1 || usrInput > 10) {
+						System.out.println("Please enter bewteen 1 and 10:");
+						usrInput = sc.nextInt();
+					}
+					break;
 				}
+				catch(Exception e){
+					System.out.println("Please enter bewteen 1 and 10:");
+				}
+				
 			}
-			catch(Exception e){
-				System.out.println("Please enter bewteen 1 and 10:");
+			
+			
+			if(usrInput == 1) {
+				addNewSongToPlaylist(playlist);
+			}
+			if(usrInput == 2) {
+				searchAsong(playlist);
+			}
+			if(usrInput == 3) {
+				
+			}
+			if(usrInput == 4) {
+				removeSongFromPlaylist(playlist);
+			}
+			if(usrInput == 5) {
+				playlist.printPlaylist();
+			}
+			if(usrInput == 6) {
+				
+			}
+			if(usrInput == 7) {
+				
+			}
+			if(usrInput == 8) {
+				getSongByArtist(playlist);
+			}
+			if(usrInput == 9) {
+				getSongsBelowLength(playlist);
+			}
+			if(usrInput == 10) {
+				
 			}
 		}
 	
@@ -94,7 +133,27 @@ public class Main {
 
 	}
 	
-	public void addNewSongToPlaylist(Playlist p) {
+	private static void getSongsBelowLength(Playlist playlist) {
+		
+		throw new UnsupportedOperationException("Unimplemented method 'getSongsBelowLength'");
+	}
+
+	private static void getSongByArtist(Playlist playlist) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getSongByArtist'");
+	}
+
+	private static void removeSongFromPlaylist(Playlist playlist) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'removeSongFromPlaylist'");
+	}
+
+	private static void searchAsong(Playlist playlist) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'searchAsong'");
+	}
+
+	public static void addNewSongToPlaylist(Playlist p) {
 		Scanner sc=new Scanner(System.in);
 		//Read in song name
 		System.out.println("Enter the song name: ");

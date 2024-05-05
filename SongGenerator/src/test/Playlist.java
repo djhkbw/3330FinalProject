@@ -21,14 +21,7 @@ public class Playlist {
 			songList.add(s);
 		}
 	}
-	//removes a song from the play list
-	public void removeSong(Song s) {
-		for(Song song : songList) {
-			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
-				songList.remove(song);
-			}
-		}
-	}
+
 	//searches for a song in the play list
 	public void searchSong(String name) {
 		for(Song song : songList) {
@@ -64,8 +57,17 @@ public class Playlist {
 	}
 	
 	
+	//Prints whole play list
+	public void printPlaylist() {
+		System.out.println("\n");
+		for(Song song : songList) {
+			System.out.println(song.toString());
+		}
+		System.out.println("\n");
+	}
+	
 	//Helper function
-	boolean isDuplicate(Song s) {
+	private boolean isDuplicate(Song s) {
 		boolean duplicate = false;
 		for(Song song : songList) {
 			if(song.getName() == s.getName() && song.getArtist() == s.getArtist()) {
@@ -74,4 +76,13 @@ public class Playlist {
 		}
 		return duplicate;
 	}
+
+public void removeSong(Song songToRemove) {
+	for (Song song : songList) {
+		if (song.getName().equals(songToRemove.getName()) && song.getArtist().equals(songToRemove.getArtist())) {
+			songList.remove(song);
+			break; // Exit the loop after removing the song
+		}
+	}
+}
 }
