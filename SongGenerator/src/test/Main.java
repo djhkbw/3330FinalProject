@@ -33,18 +33,19 @@ public class Main {
 			try {
 				duration = sc.nextDouble();
 				if (duration == 0) {
-					System.out.println("Please enter a duration: ");
 					throw new Exception();
+				}else {
+					break;
 				}
-				break;
 			}catch(Exception e){
 				System.out.println("Enter the duration (example: 2.36):");
+				sc.next();
 			}
 		}
-		if (duration == 0) {
-			System.out.println("Please enter a duration: ");
-			duration = sc.nextDouble();
-		}
+//		if (duration == 0) {
+//			System.out.println("Please enter a duration: ");
+//			duration = sc.nextDouble();
+//		}
 		System.out.println("Enter the song name to search: ");
 		String searchSong = sc.nextLine();
 		if (searchSong.isEmpty()) {
