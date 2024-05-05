@@ -157,15 +157,18 @@ public class Main {
 	
 	public void addNewSongToPlaylist(Playlist p) {
 		Scanner sc=new Scanner(System.in);
+		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
 		if (songName.isEmpty()) {
 			System.out.println("Please enter a song name: ");
 			songName = sc.nextLine();
 		}
+		//read in genre
 		System.out.println("Enter a number for the genre \n(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country): ");
 		int genreInput;
 		Genre genre = null;
+		//validate input
 		while(true) {
 			try {
 				genreInput = sc.nextInt();
@@ -200,12 +203,14 @@ public class Main {
 		if(genreInput == 7) {
 			genre = Genre.COUNTRY;
 		}
+		//read in artist name
 		System.out.println("Enter the artist: ");
 		String artist = sc.nextLine();
 		if (artist.isEmpty()) {
 			System.out.println("Please enter an artist: ");
 			artist = sc.nextLine();
 		}
+		//Read in duration and validate input
 		System.out.println("Enter the duration: ");
 		double duration;
 		while(true) {
@@ -220,12 +225,6 @@ public class Main {
 				System.out.println("Enter the duration (example: 2.36):");
 				sc.next();
 			}
-		}
-		System.out.println("Enter the song name to search: ");
-		String searchSong = sc.nextLine();
-		if (searchSong.isEmpty()) {
-			System.out.println("Please enter a song name to search: ");
-			searchSong = sc.nextLine();
 		}
 	
 		sc.close();
