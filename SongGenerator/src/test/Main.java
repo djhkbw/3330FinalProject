@@ -17,7 +17,9 @@ public class Main {
 					+ "(6): Get all songs of a certain genre\n"
 					+ "(8): Get all songs of a certain artist\n"
 					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Clear playlist");
+					+ "(10): Get all songs above a certian length\n"
+					+ "(11): Clear playlist\n"
+					+ "(12): Quit");
 			
 			//get user input
 			while(true) {
@@ -65,9 +67,18 @@ public class Main {
 				getSongsBelowLength(playlist);
 			}
 			if(usrInput == 10) {
-				
+				double length = getUserLength(sc);
+				playlist.getSongsAboveLength(length);
 			}
 			
+			if(usrInput == 11) {
+				
+			}
+			if(usrInput == 12) {
+				System.out.println("Goodbye!");
+				sc.close();
+				break;
+			}
 		}
 	
 
@@ -271,5 +282,65 @@ public class Main {
 		p.addSong(s);
 	}
 	
+	public static Genre getUserGenre(Scanner sc) {
+		int usrInput = 0;
+		Genre genre = null;
+		System.out.println("Enter the genre you would like to search the playlist for\n"
+				+ "(1 = Rock, 2 = Pop, 3 = Grunge, 4 = Classical, 5 = Electro, 6 = Jazz, 7 = Country):");
+		while(true) {
+			try {
+				usrInput = sc.nextInt();
+				while (usrInput < 1 || usrInput > 7) {
+					System.out.println("Enter a listed number for the genre:");	
+					usrInput = sc.nextInt();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter a listed number for the genre:");
+				sc.next();
+			}
+		}
+		if(usrInput == 1) {
+			genre = Genre.ROCK;
+		}
+		if(usrInput == 2) {
+			genre = Genre.POP;
+		}
+		if(usrInput == 3) {
+			genre = Genre.GRUNGE;
+		}
+		if(usrInput == 4) {
+			genre = Genre.CLASSICAL;
+		}
+		if(usrInput == 5) {
+			genre = Genre.ELECTRO;
+		}
+		if(usrInput == 6) {
+			genre = Genre.JAZZ;
+		}
+		if(usrInput == 7) {
+			genre = Genre.COUNTRY;
+		}
+		return genre;
+	}
+	
+	public static double getUserLength(Scanner sc) {
+		System.out.println("Enter a minimum song length:");
+		double length;
+		while(true) {
+			try {
+				length = sc.nextDouble();
+				while (length <= 0) {
+					System.out.println("Enter a valid minimum song length:");	
+					length = sc.nextDouble();
+				}
+				break;
+			}catch(Exception e){
+				System.out.println("Enter a valid minimum song length:");
+				sc.next();
+			}
+		}
+		return length;
+	}
 
 }

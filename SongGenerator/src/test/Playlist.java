@@ -56,6 +56,19 @@ public class Playlist {
 		}
 	}
 	
+	//prints all songs longer than a given length
+	public void getSongsAboveLength(double length) {
+		int count = 0;
+		for(Song song : songList) {
+			if(song.getLength() > length) {
+				System.out.println(song.toString());
+				count++;
+			}
+		}
+		if(count == 0) {
+			System.out.println("There are no songs in the playlist longer than the given length.");
+		}
+	}
 	
 	//Prints whole play list
 	public void printPlaylist() {
