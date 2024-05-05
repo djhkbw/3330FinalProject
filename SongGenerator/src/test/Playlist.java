@@ -46,6 +46,23 @@ public class Playlist {
 		}
 		return total;
 	}
+	//returns songs of certain artists in the play list
+	public void getSongsByArtist(String artist) {
+		for(Song song : songList) {
+			if(song.getArtist() == artist) {
+				System.out.println(song.toString());
+			}
+		}
+	}
+	//returns songs below a certain length
+	public void getSongsBelowLength(float length) {
+		for(Song song : songList) {
+			if(song.getLength() < length) {
+				System.out.println(song.toString());
+			}
+		}
+	}
+	
 	
 	//Helper function
 	boolean isDuplicate(Song s) {
