@@ -5,6 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Playlist playlist = new Playlist();
+		Scanner sc = new Scanner(System.in);
 		while(true) {
 			//Explain program to user
 			int usrInput = 0;
@@ -22,14 +23,13 @@ public class Main {
 					+ "(11): Shuffle the playlist order\n"
 					+ "(12): Quit");
 			
-			//get user input
-			Scanner sc = new Scanner(System.in);
 			while (true) {
 				try {
 					
 					while (usrInput < 1 || usrInput > 12) {
 						System.out.println("Please enter between 1 and 12:");
 						usrInput = sc.nextInt();
+						sc.nextLine();
 					}
 					break;
 				} catch (Exception e) {
@@ -66,8 +66,7 @@ public class Main {
 				playlist.printByGenre(genre);
 			}
 			if(usrInput == 7) {
-				String artist = getUserArtist(sc);
-				playlist.getSongsByArtist(artist);
+				getSongsByArtist(playlist, sc);
 			}
 
 			if (usrInput == 8) {
@@ -183,7 +182,7 @@ public class Main {
 	private static void getSongsByArtist(Playlist p, Scanner sc) {
 		
 		System.out.println("Enter the artist: ");
-		String artist = "";
+		String artist = sc.nextLine();;
 		if (artist.isEmpty()) {
 			System.out.println("Please enter an artist: ");
 			artist = sc.nextLine();
@@ -224,9 +223,10 @@ public class Main {
 		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
-		if (songName.isEmpty()) {
+		while (songName.isEmpty()) {
 			System.out.println("Please enter a song name: ");
 			songName = sc.nextLine();
+			//System.out.println("You have entered: " + songName);
 		}
 
 	
@@ -238,9 +238,11 @@ public class Main {
 		while(true) {
 			try {
 				genreInput = sc.nextInt();
+				sc.nextLine();
 				while (genreInput < 1 || genreInput > 7) {
 					System.out.println("Enter a listed number for the genre:");	
 					genreInput = sc.nextInt();
+					sc.nextLine();
 				}
 				break;
 			}catch(Exception e){
@@ -282,9 +284,11 @@ public class Main {
 		while(true) {
 			try {
 				duration = sc.nextDouble();
+				sc.nextLine();
 				while (duration == 0) {
 					System.out.println("Enter the duration (example: 2.36):");
 					duration = sc.nextDouble();
+					sc.nextLine();
 				}
 				break;
 			}catch(Exception e){
@@ -306,9 +310,11 @@ public class Main {
 		while(true) {
 			try {
 				usrInput = sc.nextInt();
+				sc.nextLine();
 				while (usrInput < 1 || usrInput > 7) {
 					System.out.println("Enter a listed number for the genre:");	
 					usrInput = sc.nextInt();
+					sc.nextLine();
 				}
 				break;
 			}catch(Exception e){
@@ -346,9 +352,11 @@ public class Main {
 		while(true) {
 			try {
 				length = sc.nextDouble();
+				sc.nextLine();
 				while (length <= 0) {
 					System.out.println("Enter a valid minimum song length:");	
 					length = sc.nextDouble();
+					sc.nextLine();
 				}
 				break;
 			}catch(Exception e){
@@ -359,15 +367,15 @@ public class Main {
 		return length;
 	}
 	
-	public static String getUserArtist(Scanner sc) {
-		System.out.println("Enter the artist: ");
-		String artist = sc.nextLine();
-		if (artist.isEmpty()) {
-			System.out.println("Please enter an artist: ");
-			artist = sc.nextLine();
-		}
-		System.out.println("you have entered artist: " + artist);
-		return artist;
-	}
+//	public static String getUserArtist(Scanner sc) {
+//		System.out.println("Enter the artist: ");
+//		String artist = sc.nextLine();
+//		if (artist.isEmpty()) {
+//			System.out.println("Please enter an artist: ");
+//			artist = sc.nextLine();
+//		}
+//		System.out.println("you have entered artist: " + artist);
+//		return artist;
+//	}
 
 }
