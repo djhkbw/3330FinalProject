@@ -25,26 +25,29 @@ public class Playlist {
 	
 	//searches for a song in the play list
 	public void searchSong(String songName) {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
+		int count = 0;
 		for(Song song : songList) {
 			if(song.getName().equals(songName)) {
 				System.out.println(song.toString());
 			}
-			int count = 0;
-			for (int i = 0; i < songList.size(); i++) {
-				Song currentSong = songList.get(i);
-				if (currentSong.getName().equals(songName)) {
-					System.out.println(currentSong.toString());
-					count++;
-				}
-			}
-			if(count == 0) {
-				System.out.println("There are no songs in the playlist with that name.");
-			}
+//			int count = 0;
+//			for (int i = 0; i < songList.size(); i++) {
+//				Song currentSong = songList.get(i);
+//				if (currentSong.getName().equals(songName)) {
+//					System.out.println(currentSong.toString());
+//					count++;
+//				}
+//			}
+		}
+		if(count == 0) {
+			System.out.println("There are no songs in the playlist with that name.");
 		}
 	}
 	
 	//Gets the total runtime of the play list
 	float getTotalRuntime() {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		float total = 0;
 		for(Song song : songList) {
 			total += song.getLength();
@@ -53,14 +56,22 @@ public class Playlist {
 	}
 	//returns songs of certain artists in the play list
 	public void getSongsByArtist(String artist) {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
+		int count = 0;
 		for(Song song : songList) {
-			if(song.getArtist() == artist) {
+			if(song.getArtist().equals(artist)) {
 				System.out.println(song.toString());
+				count++;
 			}
 		}
+		if(count == 0) {
+			System.out.println("There are no songs in this playlist by that artist.");
+		}
 	}
+	
 	//returns songs below a certain length
 	public void getSongsBelowLength(float length) {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		for(Song song : songList) {
 			if(song.getLength() < length) {
 				System.out.println(song.toString());
@@ -70,6 +81,7 @@ public class Playlist {
 	
 	//prints all songs longer than a given length
 	public void getSongsAboveLength(double length) {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		int count = 0;
 		for(Song song : songList) {
 			if(song.getLength() > length) {
@@ -84,6 +96,7 @@ public class Playlist {
 	
 	//Prints whole play list
 	public void printPlaylist() {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		for(Song song : songList) {
 			System.out.println(song.toString());
 		}
@@ -91,6 +104,7 @@ public class Playlist {
 	
 	//Prints only songs of a certain genre;
 	public void printByGenre(Genre genre) {
+		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		int count = 0;
 		for(Song song : songList) {
 			if(song.getGenre() == genre) {
@@ -115,6 +129,10 @@ public class Playlist {
 	}
 
 	public void removeSong(String songName) {
+		if(songList.size() == 0) { 
+			System.out.println("The playlist is empty.");
+			return;
+		}
 		for (int i = 0; i < songList.size(); i++) {
 			Song song = songList.get(i);
 			if (song.getName().equals(songName)) {

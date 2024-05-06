@@ -15,11 +15,11 @@ public class Main {
 					+ "(4): Remove a song from the playlist\n"
 					+ "(5): See all songs included in the playlist\n"
 					+ "(6): Get all songs of a certain genre\n"
-					+ "(8): Get all songs of a certain artist\n"
-					+ "(9): Get all songs below a certain length\n"
-					+ "(10): Get all songs above a certian length\n"
-					+ "(11): Clear playlist\n"
-					+ "(12): Shuffle the playlist order\n"
+					+ "(7): Get all songs of a certain artist\n"
+					+ "(8): Get all songs below a certain length\n"
+					+ "(9): Get all songs above a certian length\n"
+					+ "(10): Clear playlist\n"
+					+ "(11): Shuffle the playlist order\n"
 					+ "(12): Quit");
 			
 			//get user input
@@ -62,10 +62,12 @@ public class Main {
 			}
 			
 			if(usrInput == 6) {
-				getSongsByArtist(playlist, sc);
+				Genre genre = getUserGenre(sc);
+				playlist.printByGenre(genre);
 			}
 			if(usrInput == 7) {
-				getSongsBelowLength(playlist, sc);
+				String artist = getUserArtist(sc);
+				playlist.getSongsByArtist(artist);
 			}
 
 			if (usrInput == 8) {
@@ -181,13 +183,13 @@ public class Main {
 	private static void getSongsByArtist(Playlist p, Scanner sc) {
 		
 		System.out.println("Enter the artist: ");
-		String artist = sc.nextLine();
+		String artist = "";
 		if (artist.isEmpty()) {
 			System.out.println("Please enter an artist: ");
 			artist = sc.nextLine();
 		}
 		p.getSongsByArtist(artist);
-		System.out.println("Songs by artist: " + artist + " found. songs are: " + p);
+		//System.out.println("Songs by artist: " + artist + " found. songs are: " + p);
 		
 	}
 
@@ -200,7 +202,7 @@ public class Main {
 			songName = sc.nextLine();
 		}
 		p.removeSong(songName); // Remove the song with the given name from the playlist
-		System.out.println("song removed: " + songName);
+		//System.out.println("song removed: " + songName);
 		
 	}
 
@@ -213,7 +215,7 @@ public class Main {
 			songName = sc.nextLine();
 		}
 		p.searchSong(songName); // Search for the song with the given name in the playlist
-		System.out.println("song found: " + songName);
+		//System.out.println("song found: " + songName);
 		
 	}
 
@@ -291,7 +293,6 @@ public class Main {
 			}
 		}
 	
-		sc.close();
 		
 		Song s = new Song(songName, genre, artist, duration);
 		p.addSong(s);
@@ -356,6 +357,17 @@ public class Main {
 			}
 		}
 		return length;
+	}
+	
+	public static String getUserArtist(Scanner sc) {
+		System.out.println("Enter the artist: ");
+		String artist = sc.nextLine();
+		if (artist.isEmpty()) {
+			System.out.println("Please enter an artist: ");
+			artist = sc.nextLine();
+		}
+		System.out.println("you have entered artist: " + artist);
+		return artist;
 	}
 
 }
