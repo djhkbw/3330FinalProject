@@ -26,7 +26,7 @@ public class Main {
 			Scanner sc = new Scanner(System.in);
 			while (true) {
 				try {
-					int usrinput = sc.nextInt();
+					
 					while (usrInput < 1 || usrInput > 12) {
 						System.out.println("Please enter between 1 and 12:");
 						usrInput = sc.nextInt();
@@ -40,11 +40,11 @@ public class Main {
 
 			
 			if(usrInput == 1) {
-				addNewSongToPlaylist(playlist);
+				addNewSongToPlaylist(playlist, sc);
 				
 			}
 			if (usrInput == 2) {
-				searchSong(playlist);
+				searchSong(playlist, sc);
 				
 			}
 
@@ -54,7 +54,7 @@ public class Main {
 				System.out.println("The total runtime of this playlist is " + runTime + " minutes.");
 			}
 			if(usrInput == 4) {
-				removeSong(playlist);
+				removeSong(playlist, sc);
 				
 			}
 			if(usrInput == 5) {
@@ -62,14 +62,14 @@ public class Main {
 			}
 			
 			if(usrInput == 6) {
-				getSongsByArtist(playlist);
+				getSongsByArtist(playlist, sc);
 			}
 			if(usrInput == 7) {
-				getSongsBelowLength(playlist);
+				getSongsBelowLength(playlist, sc);
 			}
 
 			if (usrInput == 8) {
-				getSongsBelowLength(playlist);
+				getSongsBelowLength(playlist, sc);
 			}
 			if (usrInput == 9) {
 				double length = getUserLength(sc);
@@ -158,8 +158,7 @@ public class Main {
 	}
 
 
-	private static void getSongsBelowLength(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void getSongsBelowLength(Playlist p, Scanner sc) {
 		System.out.println("Enter the length: ");
 		float length;
 		while(true) {
@@ -177,11 +176,10 @@ public class Main {
 		}
 		p.getSongsBelowLength(length); // Get all songs below a certain length
 		System.out.println("Songs below length: " + length + " found. songs are: " + p);
-		sc.close();
 	}
 
-	private static void getSongsByArtist(Playlist p) {
-		Scanner sc=new Scanner(System.in);
+	private static void getSongsByArtist(Playlist p, Scanner sc) {
+		
 		System.out.println("Enter the artist: ");
 		String artist = sc.nextLine();
 		if (artist.isEmpty()) {
@@ -190,11 +188,11 @@ public class Main {
 		}
 		p.getSongsByArtist(artist);
 		System.out.println("Songs by artist: " + artist + " found. songs are: " + p);
-		sc.close();
+		
 	}
 
-	private static void removeSong(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void removeSong(Playlist p, Scanner sc) {
+		
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
 		if (songName.isEmpty()) {
@@ -203,11 +201,11 @@ public class Main {
 		}
 		p.removeSong(songName); // Remove the song with the given name from the playlist
 		System.out.println("song removed: " + songName);
-		sc.close();
+		
 	}
 
-	private static void searchSong(Playlist p) {
-		Scanner sc = new Scanner(System.in);
+	private static void searchSong(Playlist p, Scanner sc) {
+		
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();
 		if (songName.isEmpty()) {
@@ -216,11 +214,11 @@ public class Main {
 		}
 		p.searchSong(songName); // Search for the song with the given name in the playlist
 		System.out.println("song found: " + songName);
-		sc.close();
+		
 	}
 
-	public static void addNewSongToPlaylist(Playlist p) {
-		Scanner sc=new Scanner(System.in);
+	public static void addNewSongToPlaylist(Playlist p, Scanner sc) {
+		
 		//Read in song name
 		System.out.println("Enter the song name: ");
 		String songName = sc.nextLine();

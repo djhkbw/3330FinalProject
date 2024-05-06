@@ -24,10 +24,10 @@ public class Playlist {
 	}
 	
 	//searches for a song in the play list
-	public void searchSong(String name) {
-		for(Song song : songList) {
-			if(song.getName() == name) {
-				System.out.println("Song found: " + song.toString());
+	public void searchSong(String songName) {
+		for(Song song : Playlist.this.songList) {
+			if(song.getName().equals(songName)) {
+				System.out.println(song.toString());
 			}
 		}
 	}
