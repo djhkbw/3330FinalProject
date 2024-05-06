@@ -25,9 +25,20 @@ public class Playlist {
 	
 	//searches for a song in the play list
 	public void searchSong(String songName) {
-		for(Song song : Playlist.this.songList) {
+		for(Song song : songList) {
 			if(song.getName().equals(songName)) {
 				System.out.println(song.toString());
+			}
+			int count = 0;
+			for (int i = 0; i < songList.size(); i++) {
+				Song currentSong = songList.get(i);
+				if (currentSong.getName().equals(songName)) {
+					System.out.println(currentSong.toString());
+					count++;
+				}
+			}
+			if(count == 0) {
+				System.out.println("There are no songs in the playlist with that name.");
 			}
 		}
 	}
