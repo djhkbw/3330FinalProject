@@ -47,7 +47,7 @@ public class Playlist {
 	}
 	
 	//Gets the total runtime of the play list
-	float getTotalRuntime() {
+	public float getTotalRuntime() {
 		if(songList.size() == 0) System.out.println("The playlist is empty.");
 		float total = 0;
 		for(Song song : songList) {
