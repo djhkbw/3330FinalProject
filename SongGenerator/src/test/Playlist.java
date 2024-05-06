@@ -30,6 +30,7 @@ public class Playlist {
 		for(Song song : songList) {
 			if(song.getName().equals(songName)) {
 				System.out.println(song.toString());
+				count++;
 			}
 //			int count = 0;
 //			for (int i = 0; i < songList.size(); i++) {
@@ -72,10 +73,15 @@ public class Playlist {
 	//returns songs below a certain length
 	public void getSongsBelowLength(float length) {
 		if(songList.size() == 0) System.out.println("The playlist is empty.");
+		int count = 0;
 		for(Song song : songList) {
 			if(song.getLength() < length) {
 				System.out.println(song.toString());
+				count++;
 			}
+		}
+		if(count == 0) {
+			System.out.println("There were no songs in the playlist shorter than the given length.");
 		}
 	}
 	

@@ -176,7 +176,7 @@ public class Main {
 			}
 		}
 		p.getSongsBelowLength(length); // Get all songs below a certain length
-		System.out.println("Songs below length: " + length + " found. songs are: " + p);
+		//System.out.println("Songs below length: " + length + " found. songs are: " + p);
 	}
 
 	private static void getSongsByArtist(Playlist p, Scanner sc) {
